@@ -6,6 +6,7 @@ contract Election{
         uint id;
         string name;
         uint voteCount;
+        string party;
     }
 
     struct Vote{
@@ -23,10 +24,13 @@ contract Election{
 
     //constructor
     constructor () public {
-    // TODO: Add implementation
+
+        //What does an election have
+            // Set of candidates
+        
     }
 
-    function addCandidate (string _name) private {
+    function addCandidate (Candidate candidate) private {
     candidatesCount ++;
     candidates[candidatesCount] = Candidate(candidatesCount, _name, 0);
     }
