@@ -44,13 +44,9 @@ contract ElectionToken is Token {
 
     function transfer(address _to, uint256 _value) returns (bool success) {
         //Default assumes totalSupply can't be over max (2^256 - 1).
-        // if balance[_from] is greater than 1 throw exception
         // Create array of candidate wallet addresses 
-        // If address is not in candidates addresses array allow transfer from voter to candidate
+        // If address is in candidates addresses array allow transfer from voter to candidate
         //if (balances[msg.sender] >= _value && balances[_to] + _value > balances[_to]) {(
-        if (balances[msg.sender] > 1){
-            // abort transaction for improper vote weight
-        }
         if (balances[msg.sender] >= _value && _value == 1) { 
             balances[msg.sender] -= _value;
             balances[_to] += _value;
@@ -60,8 +56,7 @@ contract ElectionToken is Token {
     }
 
     function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {
-        //same as above. Replace this line with the following if you want to protect against wrapping uints.
-        //if (balances[_from] >= _value && allowed[_from][msg.sender] >= _value && balances[_to] + _value > balances[_to]) {
+
         if (balances[_from] >= _value && allowed[_from][msg.sender] >= _value && _value == 1) {
             balances[_to] += _value;
             balances[_from] -= _value;
@@ -90,18 +85,11 @@ contract ElectionToken is Token {
     uint256 public totalSupply;
 }
 
-
-//name this contract whatever you'd like
 contract VoteToken is ElectionToken {
 
-    function () {
-        //if ether is sent to this address, send it back.
-        throw;
-    }
-
-    string public name;                   //fancy name: eg Simon Bucks
-    uint8 public decimals;                //How many decimals to show. ie. There could 1000 base units with 3 decimals. Meaning 0.980 SBX = 980 base units. It's like comparing 1 wei to 1 ether.
-    string public symbol;                 //An identifier: eg SBX
+    string public name;                   
+    uint8 public decimals;                
+    string public symbol;                 
     string public version = '0.1';       //human 0.1 standard. Just an arbitrary versioning scheme.
 
     function VoteToken(
