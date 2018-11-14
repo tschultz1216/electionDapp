@@ -1,4 +1,4 @@
-pragma solidity ^; 0.4.2;
+pragma solidity ^ 0.4.2;
 /// contract hash: 0x25aAD55C5bfaFBcCBC33c31821843Ea7FBc9203a
 /// etherscan contract deployment: https://ropsten.etherscan.io/tx/0x2a2f2f25cf9221251209bdd13278098e1bdcc8c8e3bb6dba1e3fe00515632402
 /// etherscan contract page: https://ropsten.etherscan.io/address/0x25aad55c5bfafbccbc33c31821843ea7fbc9203a
