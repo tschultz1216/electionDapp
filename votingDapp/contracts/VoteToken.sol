@@ -47,8 +47,6 @@ contract ElectionToken is Token {
 
     function transfer(address _to, uint256 _value) returns (bool success) {
         //Default assumes totalSupply can't be over max (2^256 - 1).
-        // Create array of candidate wallet addresses 
-        // If address is in candidates addresses array allow transfer from voter to candidate
         if (balances[msg.sender] >= _value && _value == 1) { 
             balances[msg.sender] -= _value;
             balances[_to] += _value;
